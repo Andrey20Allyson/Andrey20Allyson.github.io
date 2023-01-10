@@ -10,14 +10,24 @@ body {
   background-color: rgb(130, 163, 179);
 }
 
-#rightDiv {
-  width: 25%;
-  max-width: 230px;
-  height: auto;
+#leftDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
   border-right-style: solid;
   border-right-width: 3px;
   border-color: rgb(25, 48, 97);
   background-color: rgb(32, 96, 180);
+  background-image: linear-gradient(rgb(0, 41, 155), rgba(255, 255, 255, 0.144));
+  top: 40px;
+  position: fixed;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+#leftDiv:onClick {
+  width: 400px;
 }
 
 ul {
@@ -29,9 +39,15 @@ p {
   margin-top: 10px;
 }
 
+#mainDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #mainNav {
   display: flex;
-  padding: 2vmin;
+  padding: 10px;
   flex-direction: column;
 }
 
@@ -50,11 +66,11 @@ p {
 .navLink {
   color: #d0d0ec;
   width: 100%;
-  font-size: calc(1vw + 10px);
+  font-size: 16px;
   text-align: center;
   margin-bottom: 5px;
   border-radius: 4px;
-  background-color: rgba(17, 17, 197, 0.233);
+  background-color: rgba(94, 94, 190, 0.233);
   text-decoration: none;
   border-style: solid;
   border-width: 0;
@@ -62,13 +78,13 @@ p {
   border-bottom-color: rgba(216, 237, 255, 0.555);
 }
 
-#mainDiv {
+.paperDiv {
   margin: 15px;
   border-radius: 4px;
   padding-top: 3%;
   padding-left: 5%;
   padding-right: 5%;
-  width: 55%;
+  width: 65%;
   background-color: aliceblue;
   border-width:0;
   border-bottom-width: 4px;
