@@ -14,20 +14,21 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 120px;
+  width: 130px;
   border-right-style: solid;
   border-right-width: 3px;
-  border-color: rgb(25, 48, 97);
-  background-color: rgb(32, 96, 180);
-  background-image: linear-gradient(rgb(0, 41, 155), rgba(255, 255, 255, 0.144));
+  border-color: rgb(88, 95, 112);
+  background-color: rgb(51, 74, 104);
+  background-image: linear-gradient(rgb(147, 155, 177), rgba(255, 255, 255, 0.144));
   top: 40px;
   position: fixed;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
-}
-
-#leftDiv:onClick {
-  width: 400px;
+  left: -110px;
+  animation-duration: 2s;
+  animation-name: none;
+  animation-iteration-count: 1;
+  animation-play-state: running;
 }
 
 ul {
@@ -36,13 +37,33 @@ ul {
 
 p {
   margin-bottom: 10px;
+  text-align: justify;
   margin-top: 10px;
 }
 
 #mainDiv {
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+@keyframes hide {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -110px;
+  }
+}
+
+@keyframes show {
+  0% {
+    left: -110px;
+  }
+  100% {
+    left: 0;
+  }
 }
 
 #mainNav {
@@ -57,25 +78,39 @@ p {
   border-radius: 40%;
 }
 
+#coisaQuePixa {
+  display: flex;
+  cursor: pointer;
+}
+
 #topDiv {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.coisa {
+  background-color: #c8e7f3;
+  margin-right: 3px;
+  width: 3px;
+  height: 30px;
+  border-radius: 2px;
+}
+
 .navLink {
-  color: #d0d0ec;
+  color: #0b0b30;
   width: 100%;
   font-size: 16px;
   text-align: center;
   margin-bottom: 5px;
   border-radius: 4px;
-  background-color: rgba(94, 94, 190, 0.233);
+  background-color: rgba(158, 156, 190, 0.445);
   text-decoration: none;
   border-style: solid;
   border-width: 0;
-  border-bottom-width: 1px;
-  border-bottom-color: rgba(216, 237, 255, 0.555);
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+  border-color: rgba(216, 237, 255, 0.445);
 }
 
 .paperDiv {
@@ -88,7 +123,7 @@ p {
   background-color: aliceblue;
   border-width:0;
   border-bottom-width: 4px;
-  border-bottom-color: #363e53d3;
+  border-bottom-color: #495d8fcb;
   border-right-width: 4px;
   border-right-color: rgb(170, 170, 170);
   border-style: solid;
