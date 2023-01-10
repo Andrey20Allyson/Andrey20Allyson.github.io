@@ -8,6 +8,7 @@ body {
   margin: 0;
   min-height: 100vh;
   background-color: rgb(130, 163, 179);
+  background-image: linear-gradient(#010033, rgb(67, 95, 155));
 }
 
 #leftDiv {
@@ -17,9 +18,8 @@ body {
   width: 130px;
   border-right-style: solid;
   border-right-width: 3px;
-  border-color: rgb(88, 95, 112);
-  background-color: rgb(101, 123, 151);
-  background-image: linear-gradient(rgb(147, 155, 177), rgba(255, 255, 255, 0.144));
+  border-color: rgb(29, 159, 182);
+  background-color: rgb(17, 67, 167);
   top: 40px;
   position: fixed;
   border-top-right-radius: 20px;
@@ -29,6 +29,14 @@ body {
   animation-name: none;
   animation-iteration-count: 1;
   animation-play-state: running;
+}
+
+h2 {
+  border-style: solid;
+  border-width: 0;
+  border-bottom-width: 2px;
+  border-color: #010033;
+  border-radius: 5px;
 }
 
 ul {
@@ -44,6 +52,11 @@ p {
 a {
   text-decoration: none;
   margin-bottom: 5px;
+}
+
+.headerInfo {
+  margin: 0;
+  font-size: 13px;
 }
 
 #mainDiv {
@@ -104,12 +117,13 @@ a {
 
 .navLink {
   color: #0b0b30;
+  font-weight: bold;
   width: 100%;
   font-size: 16px;
   text-align: center;
   margin-bottom: 5px;
   border-radius: 4px;
-  background-color: rgba(178, 174, 230, 0.445);
+  background-color: rgb(154, 174, 228);
   text-decoration: none;
   border-style: solid;
   border-width: 0;
