@@ -21,6 +21,11 @@ body {
   border-right-width: 3px;
   border-color: rgb(99, 137, 163);
   background-color: rgb(54, 87, 153);
+
+  box-shadow:
+    -2px 4px 4px inset #fff4,
+    2px -2px 4px inset #0003;
+
   top: 40px;
   position: fixed;
   border-top-right-radius: 20px;
@@ -75,6 +80,7 @@ a {
   0% {
     left: 0;
   }
+
   100% {
     left: -110px;
   }
@@ -84,6 +90,7 @@ a {
   0% {
     left: -110px;
   }
+
   100% {
     left: 0;
   }
@@ -114,6 +121,9 @@ a {
 
 .coisa {
   background-color: #c8e7f3;
+
+  box-shadow: inset 1px -1px 2px #0006;
+
   margin-right: 3px;
   width: 3px;
   height: 30px;
@@ -145,10 +155,16 @@ a {
   padding-right: 5%;
   width: 73%;
   background-color: aliceblue;
-  border-width:0;
+
+  box-shadow:
+    -2px 2px 5px #0005,
+    2px -2px 5px inset #458b,
+    -2px 2px 5px inset #bbfb;
+
+  border-width: 0;
   border-bottom-width: 4px;
   border-bottom-color: #495d8fcb;
   border-right-width: 4px;
-  border-right-color: rgb(170, 170, 170);
+  border-right-color: #bbf;
   border-style: solid;
 }
