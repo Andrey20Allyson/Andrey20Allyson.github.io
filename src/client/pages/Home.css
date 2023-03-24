@@ -1,0 +1,12 @@
+.home-root {
+  background-color: #eee;
+  height: 100vh;
+  color: #000;
+  display: grid;
+  grid-template: 1fr 6fr / 1fr;
+}
+
+.home-body {
+  display: flex;
+  justify-content: center;
+}
