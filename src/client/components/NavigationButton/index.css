@@ -1,43 +1,9 @@
-/* src/client/App.css */
-@font-face {
-  font-family: Fira Code;
-  src: url(./FiraCode-Light-HC7D3PCB.ttf);
-}
-body {
-  margin: 0;
-}
-.app-root {
-  font-family: Fira Code;
-  min-height: 100vh;
-  background-color: #99eecb;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-img.source-code-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-/* src/client/components/NavitagionBar/index.css */
-.nav {
-  background-color: #ddd;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  border-top-right-radius: 15px;
-  border-top-left-radius: 15px;
-  width: 100%;
-}
-
-/* src/client/components/NavigationButton/index.css */
 :root {
   --body-background-color: #6daa;
   --hover-on-background-color: #8eca;
   --selected-background-color: #8eca;
 }
+
 .navbtn-body {
   background-color: #6daa;
   height: 40px;
@@ -50,9 +16,11 @@ img.source-code-img {
   box-shadow: -2px 0px 10px #0002;
   cursor: pointer;
 }
+
 .navbtn-body.selected {
   background-color: var(--selected-background-color);
 }
+
 @keyframes hover-on-anim {
   0% {
     transform: scale(1);
@@ -63,6 +31,7 @@ img.source-code-img {
     background-color: var(--hover-on-background-color);
   }
 }
+
 @keyframes hover-off-anim {
   0% {
     transform: scale(1.2);
@@ -73,39 +42,22 @@ img.source-code-img {
     background-color: var(--body-background-color);
   }
 }
+
 .navbtn-body.hover-enter {
   animation-name: hover-on-anim;
   animation-duration: 100ms;
   transform: scale(1.2);
   background-color: var(--hover-on-background-color);
 }
+
 .navbtn-body.hover-leave {
   animation-name: hover-off-anim;
   animation-duration: 100ms;
 }
+
 .navbtn-title {
   margin: 0;
   color: #222;
   user-select: none;
   font-weight: bold;
 }
-
-/* src/client/pages/Home.css */
-.home-root {
-  background-color: #eee;
-  min-height: 70vh;
-  width: 700px;
-  color: #000;
-  border-radius: 15px;
-  box-shadow: -4px 7px 14px #0004;
-}
-.home-body {
-  display: grid;
-  grid-template: 30px 1fr / 1fr;
-  justify-items: center;
-  align-items: center;
-}
-.home-article {
-  padding: 20px;
-}
-/*# sourceMappingURL=bundle.css.map */

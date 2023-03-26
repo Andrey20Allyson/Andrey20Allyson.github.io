@@ -1,12 +1,19 @@
 .home-root {
   background-color: #eee;
-  height: 100vh;
+  min-height: 70vh;
+  width: 700px;
   color: #000;
-  display: grid;
-  grid-template: 1fr 6fr / 1fr;
+  border-radius: 15px;
+  box-shadow: -4px 7px 14px #0004;
 }
 
 .home-body {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template: 30px 1fr / 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+.home-article {
+  padding: 20px;
 }

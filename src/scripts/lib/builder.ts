@@ -22,6 +22,13 @@ export const bundleOptions = createBuildOptions({
   bundle: true,
   outfile: OUT_FILE,
   metafile: true,
+  loader: {
+    '.jpeg': 'file',
+    '.jpg': 'file',
+    '.png': 'file',
+    '.ico': 'file',
+    '.ttf': 'file',
+  }
 });
 
 export const devBundleOptions = createBuildOptions({

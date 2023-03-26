@@ -1,6 +1,5 @@
 import '.';
 
-console.log('ola');
 const eventSource = new EventSource('/events');
 
 let reloaded = false;
