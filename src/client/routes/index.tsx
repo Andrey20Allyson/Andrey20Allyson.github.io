@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import NavigationBar from "../components/NavitagionBar";
 import NavigationButton from "../components/NavitagionBar/NavigationButton";
 import About from "../pages/About";
+import Contacts from "../pages/Contacts";
 import Education from "../pages/Educations";
 import Experience from "../pages/Experience";
 import NotFound from "../pages/NotFound";
@@ -41,8 +42,8 @@ export function AppRoutes() {
           <Route element={<About />} path='/' />
           <Route element={<Skills />} path='/skills' />
           <Route element={<Experience />} path='/experience' />
-          <Route element={<Education/>} path='/education' />
-          <Route path='/contacts' />
+          <Route element={<Education />} path='/education' />
+          <Route element={<Contacts />} path='/contacts' />
           <Route element={<NotFound />} path='*' />
         </Routes>
       </div>

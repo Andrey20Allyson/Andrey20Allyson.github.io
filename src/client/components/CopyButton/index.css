@@ -1,0 +1,14 @@
+.copybtn-body {
+  width: 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+.copybtn-body>svg {
+  width: max-content;
+  fill: #4dc2a6dc;
+}
+
+.copybtn-body.copied>svg {
+  fill: #467268dc;
+}
