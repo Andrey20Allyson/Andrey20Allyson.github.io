@@ -1,0 +1,18 @@
+.router-content {
+  background-color: #eee;
+  height: 70vh;
+  width: 70vw;
+  color: #000;
+  border-radius: 15px;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  border-top: 1px solid #0002;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
+
+.router-body {
+  box-shadow: -4px 7px 14px #0004;
+  border-radius: 15px;
+}

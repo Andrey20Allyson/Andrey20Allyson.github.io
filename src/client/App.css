@@ -8,13 +8,13 @@ body {
 }
 
 .app-root {
+  box-sizing: border-box;
   font-family: Fira Code;
   min-height: 100vh;
   background-color: #99eecb;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
   /* background-image: url('./images//source-code.jpeg');
   background-repeat: no-repeat;
   background-position-x: center;

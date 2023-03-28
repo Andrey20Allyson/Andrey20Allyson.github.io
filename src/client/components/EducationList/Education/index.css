@@ -1,0 +1,28 @@
+.education-li {
+  width: 70%;
+  background-color: #0001;
+  padding: 10px;
+  border-radius: 10px;
+  box-sizing: content-box;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: -2px 2px 10px #0003;
+}
+
+.education-instituition-img-div {
+  box-shadow: -2px 2px 10px #0002 inset;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.education-instituition-img {
+  background-size: cover;
+  max-height: 80px;
+  max-width: 100%;
+  border-radius: 8px;
+}
+  
