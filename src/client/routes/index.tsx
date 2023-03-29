@@ -13,12 +13,12 @@ import './index.css';
 export default function Router() {
   return (
     <BrowserRouter window={window}>
-      <AppRoutes />
+      <AppLayout />
     </BrowserRouter>
   )
 }
 
-export function AppRoutes() {
+export function AppLayout() {
   const navigate = useNavigate();
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import defaultParser from "../../../utils/react-node-parser";
 import './index.css';
 
@@ -61,28 +61,35 @@ export interface EducationProps {
 }
 
 export default function Education(props: EducationProps) {
-  console.log(props.modality)
+  const {
+    desc,
+    start,
+    title,
+    finish,
+    imgSrc,
+    modality,
+  } = props;
 
   return (
     <li className='education-li'>
-      <h3>{props.title}</h3>
-      <p>{defaultParser.parse(props.desc)}</p>
+      <h3>{title}</h3>
+      <p>{defaultParser.parse(desc)}</p>
       <p>
         Modalidade: <strong>
           {
-            props.modality !== undefined
-              ? modalities[props.modality]
+            modality !== undefined
+              ? modalities[modality]
               : modalities[EducationModalities.ONLINE]
           }
         </strong>
       </p>
       <p>
         Inicado em <strong>
-          {props.start.toString()}
+          {start.toString()}
         </strong>
       </p>
-      {props.finish ? (
-        <p>Finalizado em <strong>{props.finish.toString()}</strong></p>
+      {finish ? (
+        <p>Finalizado em <strong>{finish.toString()}</strong></p>
       ) : (
         <p>
           <strong>
@@ -90,9 +97,9 @@ export default function Education(props: EducationProps) {
           </strong>
         </p>
       )}
-      {props.imgSrc && (
+      {imgSrc && (
         <div className='education-instituition-img-div'>
-          <img src={props.imgSrc} className='education-instituition-img' />
+          <img src={imgSrc} alt={`${title} - Image`} className='education-instituition-img' />
         </div>
       )}
     </li>

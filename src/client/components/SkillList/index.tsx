@@ -6,7 +6,7 @@ export interface SkillListProps {
   children?: React.ReactElement<SkillProps>[];
 }
 
-export default function SkillList(props: SkillListProps) {
+export function SkillList(props: SkillListProps) {
   return (
     <article>
       <h2>{props.title ?? 'Skills'}</h2>

@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './index.css'
-import SkillList from "../../components/SkillList";
-import Skill from "../../components/SkillList/Skill";
+import { SkillList } from "../../components/SkillList";
+import { Skill } from "../../components/SkillList/Skill";
 
 export default function Skills() {
   return (
@@ -13,15 +13,15 @@ export default function Skills() {
       <Skill title='FrontEnd' paragraphs={[
         'Utilização de *React* para a criação de interfaces altamente escaláveis (Inclusive, este currículo foi feito com *React*).',
         'Base do desenvolvimento web *HTML*, *CSS*, *JavaScript*.',
-      ]}/>
+      ]} />
       <Skill title='APIs' paragraphs={[
         'Utilização dos serviços que o *Google Cloud* disponibiliza na criação de softwares.',
         'Uso dos serviços da *Firebase* na criação de apps com um _*"backend as a service"*_',
         'Criação de soluções utilizando a API do *Google Drive*.',
-      ]}/>
+      ]} />
       <Skill title='Mobile' paragraphs={[
         'Desenvolvimento de aplicações simples utilizando *React Native* e a plataforma *Expo*.'
-      ]}/>
+      ]} />
     </SkillList>
   )
 }
