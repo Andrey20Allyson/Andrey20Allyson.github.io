@@ -16,7 +16,7 @@ export enum HoverState {
   HOVER_OFF,
 }
 
-export default function NavigationButton(props: NavigationButtonProps) {
+export function NavigationButton(props: NavigationButtonProps) {
   const [hover, setHover] = useState(HoverState.INITIAL);
   // const navigate = useNavigate();
 

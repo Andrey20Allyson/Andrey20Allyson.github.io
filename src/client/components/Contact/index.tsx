@@ -1,5 +1,5 @@
 import React from "react";
-import CopyButton from "../CopyButton";
+import { CopyButton } from "../CopyButton";
 import './index.css'
 
 export interface ContactProps {
@@ -11,7 +11,7 @@ export interface ContactProps {
 
 const hrefRegExp = /^https?:\/\/.*$/;
 
-export default function Contact(props: ContactProps) {
+export function Contact(props: ContactProps) {
   return (
     <div className="contact-body">
       <h3 className="contact-title" >{props.title}</h3>

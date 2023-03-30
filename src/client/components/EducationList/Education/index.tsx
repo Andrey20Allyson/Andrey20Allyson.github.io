@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import defaultParser from "../../../utils/react-node-parser";
 import './index.css';
 
@@ -8,11 +8,11 @@ export enum EducationModalities {
   SEMI_PRESENTIAL,
 }
 
-type EducationModalitiesMap = {
+export type EducationModalitiesMap = {
   [k in EducationModalities]: string;
 };
 
-const modalities: EducationModalitiesMap = {
+export const modalities: EducationModalitiesMap = {
   [EducationModalities.ONLINE]: 'Online',
   [EducationModalities.PRESENTIAL]: 'Presencial',
   [EducationModalities.SEMI_PRESENTIAL]: 'Semi Presencial',
@@ -60,7 +60,7 @@ export interface EducationProps {
   index?: string;
 }
 
-export default function Education(props: EducationProps) {
+export function Education(props: EducationProps) {
   const {
     desc,
     start,

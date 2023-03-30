@@ -1,5 +1,5 @@
 import React from "react";
-import Education, { EducationProps } from "./Education";
+import { EducationProps, Education } from "./Education";
 import './index.css';
 
 type EducationType = {
@@ -11,7 +11,7 @@ export interface EducationListProps {
   children: EducationType | EducationType[];
 }
 
-export default function EducationList(props: EducationListProps) {
+export function EducationList(props: EducationListProps) {
   const children: React.ReactNode[] = [];
 
   if (props.children instanceof Array) {

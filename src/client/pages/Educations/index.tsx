@@ -1,6 +1,6 @@
 import React from "react"
-import EducationList from "../../components/EducationList"
-import Education, { EducationModalities, MonthAndYear } from "../../components/EducationList/Education"
+import { EducationList } from "../../components/EducationList"
+import { EducationModalities, MonthAndYear, Education } from "../../components/EducationList/Education"
 
 export default function Educations() {
   return (
