@@ -2,7 +2,7 @@ import { build, BuildOptions, context } from 'esbuild';
 import path from 'path';
 
 export const CLIENT_SOURCE_DIR = path.join(process.cwd(), 'src/client/');
-export const OUT_FILE = path.join(process.cwd(), 'docs/bundle.js');
+export const OUT_FILE = path.join(process.cwd(), 'docs/bundle');
 
 export const ENTRY_POINT = path.join(CLIENT_SOURCE_DIR, 'index.tsx');
 export const DEV_ENTRY_POINT = path.join(CLIENT_SOURCE_DIR, 'dev.ts');
