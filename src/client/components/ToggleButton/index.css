@@ -1,3 +1,4 @@
 .togglebtn-body {
   user-select: none;
+  cursor: pointer;
 }
