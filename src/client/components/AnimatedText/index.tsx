@@ -1,5 +1,4 @@
-import React, { ComponentType, PropsWithChildren, useEffect, useMemo, useState } from 'react';
-import './index.css';
+import React, { ComponentType, useEffect, useState } from 'react';
 
 export interface AnimatedTextComponentProps {
   children: string;

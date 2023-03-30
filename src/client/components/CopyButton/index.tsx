@@ -3,11 +3,11 @@ import { AiOutlineCopy, AiOutlineCheck } from 'react-icons/ai';
 import './index.css'
 
 export function CheckIcon() {
-  return <AiOutlineCheck className="copybtn-icon" size='max-content' />
+  return <AiOutlineCheck className="copybtn-icon" size='25' />
 }
 
 export function CopyIcon() {
-  return <AiOutlineCopy className="copybtn-icon" size='max' />
+  return <AiOutlineCopy className="copybtn-icon" size='25' />
 }
 
 export interface CopyButtonProps {
