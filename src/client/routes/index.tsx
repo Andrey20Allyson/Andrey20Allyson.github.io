@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
-import NavigationBar from "../components/NavitagionBar";
-import NavigationButton from "../components/NavitagionBar/NavigationButton";
+import { NavigationBar } from "../components/NavitagionBar";
+import { NavigationButton } from "../components/NavitagionBar/NavigationButton";
 import About from "../pages/About";
 import Contacts from "../pages/Contacts";
 import Education from "../pages/Educations";
@@ -23,7 +23,7 @@ export function AppLayout() {
 
   useEffect(() => {
     const href = sessionStorage.getItem('DEV_ACTUAL_HREF');
-    if (href) {
+    if (href && href !== location.pathname) {
       navigate(href);
     }
   }, []);
