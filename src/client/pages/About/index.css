@@ -1,0 +1,10 @@
+.animated-skills {
+  color: rgb(0, 168, 118);
+  text-shadow: -2px 2px 2px #0001;
+  font-weight: lighter;
+  padding-left: 10px;
+  border: 0;
+  border-left: 4px;
+  border-style: solid;
+  border-color: rgb(72, 211, 165);
+}
