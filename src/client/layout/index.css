@@ -1,0 +1,67 @@
+.outer-layout {
+  height: 100vh;
+  display: flex;
+  box-sizing: border-box;
+  background-color: #99eecb;
+}
+
+.inner-layout {
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: -4px 7px 14px #0004;
+}
+
+.content {
+  padding: 20px;
+  overflow-y: scroll;
+  box-sizing: border-box;
+  background-color: #eee;
+}
+
+.theme-switch-container {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* pocket */
+
+.outer-layout.pocket {
+  display: grid;
+  grid-template-rows: 1fr 50px;
+}
+
+.content.pocket {
+  display: flex;
+  flex-direction: column;
+}
+
+/* not pocket */
+
+.outer-layout:not(.pocket) {
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.content:not(.pocket) {
+  width: 70vw;
+  height: 70vh;
+}
+
+.theme-switch-container:not(.pocket) {
+  padding-right: 30px;
+}
+
+/* dark theme */
+
+.outer-layout.dark {
+  background-color: #225740;
+  color: #eee;
+}
+
+.content.dark {
+  background-color: #111;
+}
