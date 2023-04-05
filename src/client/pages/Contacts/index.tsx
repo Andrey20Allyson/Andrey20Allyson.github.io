@@ -18,7 +18,7 @@ export default function Contacts() {
       <Contact
         title='Ligação'
         iconUrl='https://upload.wikimedia.org/wikipedia/commons/6/6c/Phone_icon.png'
-        contact='+55 (81)9.8304-4736'
+        contact='+55 (81)9.8246-9579'
       />
       <Contact
         title='LinkedIn'
