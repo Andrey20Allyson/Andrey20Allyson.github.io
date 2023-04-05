@@ -52,7 +52,7 @@ export class Client extends EventEmitter {
   }
 }
 
-export type StartReturn = {
+export type PrivateStartReturn = {
   host: string;
   port: number;
 }
@@ -73,6 +73,12 @@ export enum StartExitCodes {
 export class DevServer {
   static createAndStart() {
     const server = new this();
+
+    server.addHost('localhost');
+
+    const externalIP = getFirstExternalIP();
+
+    if (externalIP) server.addHost(externalIP);
 
     server.defaultStart();
 
@@ -137,13 +143,20 @@ export class DevServer {
       port = 3000,
     } = options ?? {};
 
+    if (this._hosts.size === 0) {
+      onerror?.(new Error('Can\'t initialize because hosts is empity! try use "addHost(hostname: string)".'));
+      return StartExitCodes.FAILURE;
+    }
+
     let initializations = Array
       .from(this._hosts.keys())
       .map(host => this._start(host, port));
 
     let initsWithSuccess = 0;
 
-    stdout?.('listening:');
+    stdout?.('Initializing development server');
+
+    stdout?.('   [ Listening ]');
 
     for (let initialization of initializations) {
       try {
@@ -161,6 +174,8 @@ export class DevServer {
       }
     }
 
+    stdout?.('');
+
     if (initsWithSuccess === initializations.length) {
       stdout?.('(√) Initialized all hosts with success!');
       return StartExitCodes.SUCCESS;
@@ -175,12 +190,12 @@ export class DevServer {
 
   private _start(host: string, port: number, timeout = 3000) {
     return Promise.race([
-      new Promise<StartReturn>((res, rej) => this._listen(host, port, res, rej)),
+      new Promise<PrivateStartReturn>((res, rej) => this._listen(host, port, res, rej)),
       createTimeoutError(timeout),
     ]);
   }
 
-  private _listen(host: string, port: number, success?: (value: StartReturn) => void, failure?: (reason?: any) => void) {
+  private _listen(host: string, port: number, success?: (value: PrivateStartReturn) => void, failure?: (reason?: any) => void) {
     this._app.listen(port, host, () => success?.({ host, port }))
       .on('error', err => {
         if (err.message.includes('EADDRINUSE') && port < 2 ** 16) {
