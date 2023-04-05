@@ -1,6 +1,8 @@
 import React from "react";
 import defaultParser from "../../../utils/react-node-parser";
 import './index.css';
+import { useLayoutEqualsTo } from "../../../contexts/layout";
+import { ScreenTypes } from "../../../responsivity";
 
 export enum EducationModalities {
   PRESENTIAL,
@@ -12,7 +14,7 @@ export type EducationModalitiesMap = {
   [k in EducationModalities]: string;
 };
 
-export const modalities: EducationModalitiesMap = {
+export const modalitiesMap: EducationModalitiesMap = {
   [EducationModalities.ONLINE]: 'Online',
   [EducationModalities.PRESENTIAL]: 'Presencial',
   [EducationModalities.SEMI_PRESENTIAL]: 'Semi Presencial',
@@ -60,26 +62,31 @@ export interface EducationProps {
   index?: string;
 }
 
-export function Education(props: EducationProps) {
-  const {
-    desc,
-    start,
-    title,
-    finish,
-    imgSrc,
-    modality,
-  } = props;
+export function Education({
+  desc,
+  start,
+  title,
+  finish,
+  imgSrc,
+  index,
+  modality,
+}: EducationProps) {
+  const pocket = useLayoutEqualsTo(ScreenTypes.POCKET);
+
+  const classNames = ['education-li'];
+
+  if (pocket) classNames.push('pocket');
 
   return (
-    <li className='education-li'>
-      <h3>{title}</h3>
+    <li className={classNames.join(' ')}>
+      <h3 className='education-title'>{title}</h3>
       <p>{defaultParser.parse(desc)}</p>
       <p>
         Modalidade: <strong>
           {
             modality !== undefined
-              ? modalities[modality]
-              : modalities[EducationModalities.ONLINE]
+              ? modalitiesMap[modality]
+              : modalitiesMap[EducationModalities.ONLINE]
           }
         </strong>
       </p>

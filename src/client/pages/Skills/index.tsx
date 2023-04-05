@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import './index.css'
+import React from "react";
 import { SkillList } from "../../components/SkillList";
 import { Skill } from "../../components/SkillList/Skill";
+import './index.css';
 
 export default function Skills() {
   return (

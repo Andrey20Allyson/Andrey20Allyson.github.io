@@ -8,73 +8,79 @@
 }
 
 .navbtn-body {
-  background-color: #6daa;
-  height: 40px;
+  background-color: var(--default-background-color);
+  transition-property: transform background-color;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 10px 0 0;
   padding: 0 10px;
+}
+
+.navbtn-body:not(.selected) {
+  cursor: pointer;
+}
+
+/* pocket */
+
+.navbtn-body.pocket {
+  flex: 1;
+  margin-left: .5px;
+  margin-right: .5px;
+  transition-duration: 200ms;
+}
+
+.navbtn-body.selected {
+  background-color: var(--selected-background-color);
+}
+
+.navbtn-body.pocket>.navbtn-title {
+  font-size: 2.6vw;
+}
+
+.navbtn-body.pocket.selected>.navbtn-title {
+  font-size: 4vw;
+}
+
+/* not pocket */
+
+.navbtn-body:not(.pocket) {
+  height: 40px;
+  margin: 10px 0 0;
   border-radius: 10px 10px 0 0;
   border-width: 1px;
   border-color: #0002;
   border-style: solid;
   border-bottom-width: 0;
   box-shadow: -2px 0px 10px #0002;
+  transition-duration: 200ms;
 }
 
-.navbtn-body.selected {
-  background-color: var(--selected-background-color);
+.navbtn-body.selected:not(.pocket) {
   transform: scale(var(--selected-scale)) translate(0, var(--selected-translate-y));
 }
 
-.navbtn-body.selectable {
-  cursor: pointer;
-}
-
-@keyframes hover-on-anim {
-  0% {
-    transform: scale(var(--default-scale)) translate(0, 0);
-    background-color: var(--default-background-color);
-  }
-  100% {
-    transform: scale(var(--selected-scale)) translate(0, var(--selected-translate-y));
-    background-color: var(--selected-background-color);
-  }
-}
-
-@keyframes hover-off-anim {
-  0% {
-    transform: scale(var(--selected-scale)) translate(0, var(--selected-translate-y));
-    background-color: var(--selected-background-color);
-  }
-  100% {
-    transform: scale(var(--default-scale)) translate(0, 0);
-    background-color: var(--default-background-color);
-  }
-}
-
-.navbtn-body.hover-enter {
-  animation-name: hover-on-anim;
-  animation-duration: 100ms;
+.navbtn-body:hover:not(.pocket) {
   transform: scale(var(--selected-scale)) translate(0, var(--selected-translate-y));
   background-color: var(--selected-background-color);
 }
 
-.navbtn-body.hover-leave {
-  animation-name: hover-off-anim;
-  animation-duration: 100ms;
-}
-
-.navbtn-title {
+.navbtn-title:not(.pocket) {
   margin: 0;
   color: #222;
+  transition-property: font-size;
+  transition-duration: 200ms;
   user-select: none;
-  font-weight: bold;
+  font-weight: bolder;
 }
 
-@media only screen and (max-width: 700px) {
-  .navbtn-title {
-    font-size: 2vw;
-  }
+.navbtn-title.dark {
+  color: #ddd;
+}
+
+.navbtn-body.dark {
+  background-color: #333;
+}
+
+.navbtn-body.dark:hover {
+  background-color: #333;
 }

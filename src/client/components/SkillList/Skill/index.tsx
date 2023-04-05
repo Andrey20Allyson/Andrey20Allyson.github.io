@@ -42,26 +42,28 @@ function useHeight(ref: React.RefObject<Element>) {
   const [error, setError] = useState<string>();
 
   useEffect(() => {
-    const element = ref.current;
+    const {
+      current: element
+    } = ref;
 
-    if (element) {
-      let height = element.clientHeight;
+    if (!element) return setError('reference is null');
 
-      const observer = new ResizeObserver(entries => {
-        for (const { target } of entries) {
-          if (target === element && element.clientHeight !== height) {
-            height = element.clientHeight;
-            setHeight(height);
-          }  
+    let height = element.clientHeight;
+
+    const observer = new ResizeObserver(entries => {
+      for (const { target } of entries) {
+        if (target === element && element.clientHeight !== height) {
+          height = element.clientHeight;
+          setHeight(height);
         }
-      });
+      }
+    });
 
-      observer.observe(element);
-      
-      setHeight(height);
-    } else {
-      setError('reference is null');
-    }
+    observer.observe(element);
+
+    setHeight(height);
+
+    return () => observer.disconnect();
   }, [ref]);
 
   if (error) {
@@ -71,12 +73,10 @@ function useHeight(ref: React.RefObject<Element>) {
   return height;
 }
 
-export function Skill(props: SkillProps) {
-  const {
-    title,
-    paragraphs
-  } = props;
-
+export function Skill({
+  title,
+  paragraphs,
+}: SkillProps) {
   const [isBodyVisible, setBodyVisible] = useState(false);
   const innerBodyRef = useRef<HTMLUListElement>(null);
   const bodyMaxHeight = useHeight(innerBodyRef) ?? 0;
@@ -94,7 +94,7 @@ export function Skill(props: SkillProps) {
   return (
     <li className='skill-container'>
       <div className='skill-header'>
-        <h3>{props.title}</h3>
+        <h3>{title}</h3>
         <ToggleButton
           onToggle={toggleHandler}
           toggleoff={{

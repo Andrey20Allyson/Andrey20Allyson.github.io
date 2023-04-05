@@ -1,6 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './index.css';
+import { AiOutlineBook } from 'react-icons/ai';
+import { useLayoutEqualsTo } from '../../../contexts/layout';
+import { ScreenTypes } from '../../../responsivity';
 import { useNavigate } from 'react-router-dom';
+import { useTheme } from '../../../hooks/useTheme';
+import { Themes } from '../../../contexts/theme';
+import useThemedClassName from '../../../hooks/useThemedClassName';
 
 export interface NavigationButtonProps {
   title: string;
@@ -10,54 +16,39 @@ export interface NavigationButtonProps {
   onNavigate?: (href: string) => void;
 }
 
-export enum HoverState {
-  INITIAL,
-  HOVER_ON,
-  HOVER_OFF,
-}
-
-export function NavigationButton(props: NavigationButtonProps) {
-  const [hover, setHover] = useState(HoverState.INITIAL);
-  // const navigate = useNavigate();
+export function NavigationButton({
+  href,
+  title,
+  onPress,
+  onNavigate = useNavigate(),
+  selected = location.pathname === href,
+}: NavigationButtonProps) {
+  const pocket = useLayoutEqualsTo(ScreenTypes.POCKET);
+  const [theme] = useTheme();
 
   const bodyClasses = [
     'navbtn-body',
-  ]
+  ];
 
-  let selected = location.pathname === props.href ? true : props.selected;
+  function clickHandler(ev: React.MouseEvent<HTMLDivElement>) {
+    onPress?.();
 
-  function onPressHandler(ev: React.MouseEvent<HTMLDivElement>) {
-    props.onPress?.();
-
-    if (props.href && !selected) {
-      props.onNavigate?.(props.href);
-    }
+    if (href && !selected) {
+      onNavigate?.(href)
+    };
   }
 
-  if (selected) {
-    bodyClasses.push('selected');
-  } else {
-    bodyClasses.push('selectable');
-
-    switch (hover) {
-      case HoverState.HOVER_OFF:
-        bodyClasses.push('hover-leave');
-        break;
-      case HoverState.HOVER_ON:
-        bodyClasses.push('hover-enter');
-        break;
-    }
-  }
+  if (pocket) bodyClasses.push('pocket');
+  if (selected) bodyClasses.push('selected');
+  if (theme === Themes.DARK) bodyClasses.push('dark');
 
   return (
     <div
-      onMouseEnter={() => setHover(HoverState.HOVER_ON)}
-      onMouseLeave={() => setHover(HoverState.HOVER_OFF)}
       className={bodyClasses.join(' ')}
-      onClick={onPressHandler}>
+      onClick={clickHandler}>
       <p
-        className='navbtn-title'>
-        {props.title}
+        className={useThemedClassName('navbtn-title')}>
+        {title}
       </p>
     </div>
   )

@@ -2,7 +2,7 @@ import React from "react";
 import { EducationProps, Education } from "./Education";
 import './index.css';
 
-type EducationType = {
+export type EducationType = {
   props: EducationProps
 };
 
@@ -17,18 +17,20 @@ export function EducationList(props: EducationListProps) {
   if (props.children instanceof Array) {
     let key = 0;
     for (const child of props.children) {
-      const element = <Education key={key++} {...child.props}/>;
+      const element = <Education key={key++} {...child.props} />;
 
       children.push(element);
     }
   } else {
-    children.push(<Education {...props.children.props}/>);
+    children.push(<Education {...props.children.props} />);
   }
 
   return (
-    <div className="education-list-body">
-      <h2>{props.title ?? 'Formação'}</h2>
-      <ul className="education-list-ul">{children}</ul>
-    </div>
+    <>
+      <h2 className="education-list-title">{props.title ?? 'Formação'}</h2>
+      <div className="education-list-body">
+        <ul className="education-list-ul">{children}</ul>
+      </div>
+    </>
   )
 }

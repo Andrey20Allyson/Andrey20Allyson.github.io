@@ -1,5 +1,5 @@
 import React from "react";
-import { AnimatedText, AnimatedTextComponentProps } from "../../components/AnimatedText";
+import { AnimatedText } from "../../components/AnimatedText";
 import defaultParser from "../../utils/react-node-parser";
 import './index.css';
 
@@ -8,7 +8,7 @@ export default function Home() {
     <>
       <h1>Andrey Allyson Viana Gomes</h1>
       <AnimatedText
-        Component={(props) => <h2 className="animated-skills" {...props}/>}
+        Component={props => <h2 className="animated-skills" {...props}/>}
         baseText='Um %s_'
         texts={[
           'FrontEnd!',

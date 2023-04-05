@@ -1,6 +1,9 @@
 import '.';
+import { ACTUAL_HREF, IS_DEV } from './storage-keys';
 
 const eventSource = new EventSource('/events');
+
+sessionStorage.setItem(IS_DEV, 'true');
 
 let reloaded = false;
 eventSource.onmessage = (ev: MessageEvent<string>) => {
@@ -12,7 +15,7 @@ eventSource.onmessage = (ev: MessageEvent<string>) => {
     if (reloaded) return;
     reloaded = true;
 
-    sessionStorage.setItem('DEV_ACTUAL_HREF', location.pathname);
+    sessionStorage.setItem(ACTUAL_HREF, location.pathname);
 
     if (location.pathname === '/') {
       location.reload()  

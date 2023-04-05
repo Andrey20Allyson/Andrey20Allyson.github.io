@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
-import Router from './routes';
+import { Router } from './routes';
+import { ThemeProvider } from './contexts/theme';
 
 export default function App() {
   return (
-    <div className='app-root'>
-      <Router/>
-    </div>
+    <ThemeProvider>
+      <Router />
+    </ThemeProvider>
   )
 }
