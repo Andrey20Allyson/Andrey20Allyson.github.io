@@ -8,6 +8,7 @@ import Education from "../pages/Educations";
 import Experience from "../pages/Experience";
 import NotFound from "../pages/NotFound";
 import Skills from "../pages/Skills";
+import useRedirectPath from "../hooks/useRedirectPath";
 
 export function Router() {
   return (
@@ -21,6 +22,7 @@ export function Router() {
 
 export function AppRoutes() {
   useDevLocation();
+  useRedirectPath();
 
   return (
     <Routes>
