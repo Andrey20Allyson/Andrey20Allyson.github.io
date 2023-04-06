@@ -85,7 +85,9 @@ export function PocketAppLayout({
         </div>
         {children}
       </div>
-      <AppNavigationBar />
+      <div className={useThemedClassName("nav-container pocket")}>
+        <AppNavigationBar />
+      </div>
     </div>
   )
 }
