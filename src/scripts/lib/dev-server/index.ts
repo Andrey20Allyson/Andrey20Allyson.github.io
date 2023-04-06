@@ -2,6 +2,7 @@ import express, { Express, Response, Request } from 'express';
 import EventEmitter from 'events';
 import { getFirstExternalIP } from './network';
 import { createTimeoutError } from '../util/promises';
+import path from 'path';
 
 export class Client extends EventEmitter {
   static readonly RESPONSE_HEADERS = {
@@ -97,6 +98,8 @@ export class DevServer {
     this._app.get('/events', this.eventsRouteHandler.bind(this));
 
     this._app.use(express.static('docs/'));
+
+    this._app.use((req, res) => res.status(404).sendFile(path.join(process.cwd(), 'docs/404.html')));
   }
 
   get app() {
