@@ -1,0 +1,1 @@
+## Don't open bundled files, it can crash your browser.
