@@ -1,6 +1,6 @@
 import { startDevBundle } from "./lib/builder";
 import { DevServer } from "./lib/dev-server";
-import { watchDocs } from "./lib/watch-docs";
+import { watchDocs } from "./lib/util/watch-docs";
 
 const app = DevServer.createAndStart();
 
