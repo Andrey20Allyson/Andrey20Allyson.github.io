@@ -2,7 +2,7 @@
   --default-background-color: #97d8bc;
   --default-scale: 1;
 
-  --selected-background-color: rgb(143, 207, 186);
+  --selected-background-color: #b2e0d1;
   --selected-scale: 1.2;
   --selected-translate-y: calc(calc(var(--selected-scale) - 1) * -50% + 1px)
 }
