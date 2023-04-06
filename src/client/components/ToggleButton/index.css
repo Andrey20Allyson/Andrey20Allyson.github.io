@@ -2,3 +2,7 @@
   user-select: none;
   cursor: pointer;
 }
+
+.togglebtn-body.pocket {
+  cursor: default;
+}

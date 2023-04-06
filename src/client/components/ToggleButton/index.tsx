@@ -1,4 +1,6 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
+import { useLayoutEqualsTo } from "../../contexts/layout";
+import { ScreenTypes } from "../../responsivity";
 import './index.css';
 
 export interface ElementProp<P = {}> {
@@ -46,14 +48,18 @@ export function ToggleButton(props: ToggleButtonProps) {
     onToggle,
     startToggled,
     className,
+    toggleoff,
+    toggleon,
     ...rest
   } = props;
 
   const [toggled, setToggled] = useState(startToggled ?? false);
   const { toggleOffElement, toggleOnElement } = getToggleElements(props);
+  const pocket = useLayoutEqualsTo(ScreenTypes.POCKET);
 
   const classNames = ['togglebtn-body'];
 
+  if (pocket) classNames.push('pocket');
   if (className) classNames.push(className);
 
   function clickHandler() {
