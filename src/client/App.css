@@ -9,6 +9,12 @@
     transform 200ms;
 }
 
+@media only screen and (hover: none) {
+  * {
+    cursor: default;
+  }
+}
+
 body {
   margin: 0;
   font-family: Fira Code;

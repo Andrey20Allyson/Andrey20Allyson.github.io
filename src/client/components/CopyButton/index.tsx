@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlineCopy, AiOutlineCheck } from 'react-icons/ai';
 import './index.css'
+import { useLayoutEqualsTo } from "../../contexts/layout";
+import { ScreenTypes } from "../../responsivity";
 
 export function CheckIcon() {
   return <AiOutlineCheck className="copybtn-icon" size='25' />
@@ -18,7 +20,8 @@ export interface CopyButtonProps {
 
 export function CopyButton(props: CopyButtonProps) {
   const [copied, setCopied] = useState(false);
-  let className = "copybtn-body";
+  
+  const classNames = ["copybtn-body"];
 
   async function clickHandler(ev: React.MouseEvent<HTMLDivElement>) {
     try {
@@ -35,14 +38,13 @@ export function CopyButton(props: CopyButtonProps) {
     }
   }, [copied]);
 
-  if (copied) className += ' copied';
-
-  if (props.className) className += ' ' + props.className;
+  if (copied) classNames.push('copied');
+  if (props.className) classNames.push(props.className);
 
   return (
     <div
       onClick={clickHandler}
-      className={className}>
+      className={classNames.join(' ')}>
       {copied ? <CheckIcon /> : <CopyIcon />}
     </div>
   )
