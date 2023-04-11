@@ -1,9 +1,9 @@
 import fs from 'fs/promises';
 
-export async function* watchDocs() {
+export async function* watch(filename: string) {
   const fileChangedTimes = new Map<string, number>();
 
-  for await (const info of fs.watch('docs/')) {
+  for await (const info of fs.watch(filename)) {
     const changedTime = fileChangedTimes.get(info.filename);
     const now = Date.now();
 

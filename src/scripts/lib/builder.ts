@@ -3,6 +3,7 @@ import path from 'path';
 
 export const CLIENT_SOURCE_DIR = path.join(process.cwd(), 'src/client/');
 export const OUT_DIR = path.join(process.cwd(), 'docs/');
+export const DEV_OUT_DIR = path.join(process.cwd(), 'dev/');
 
 export const ENTRY_POINT = path.join(CLIENT_SOURCE_DIR, 'index.tsx');
 export const DEV_ENTRY_POINT = path.join(CLIENT_SOURCE_DIR, 'dev.ts');
@@ -20,10 +21,10 @@ export const bundleOptions = createBuildOptions({
     NOT_FOUND_ENTRY_POINT,
   ],
   minify: true,
-  tsconfig: TSCONFIG_FILE,
   bundle: true,
-  outdir: OUT_DIR,
   metafile: true,
+  outdir: OUT_DIR,
+  tsconfig: TSCONFIG_FILE,
   loader: {
     '.jpeg': 'file',
     '.jpg': 'file',
@@ -35,8 +36,9 @@ export const bundleOptions = createBuildOptions({
 
 export const devBundleOptions = createBuildOptions({
   ...bundleOptions,
-  sourcemap: true,
   minify: false,
+  sourcemap: true,
+  outdir: DEV_OUT_DIR,
   entryPoints: [
     DEV_ENTRY_POINT,
     NOT_FOUND_ENTRY_POINT,

@@ -1,4 +1,5 @@
-import express, { Express, Response, Request } from 'express';
+import express, { Express, Response, Request, RequestHandler, IRouterHandler } from 'express';
+import { RouteParameters } from 'express-serve-static-core';
 import EventEmitter from 'events';
 import { getFirstExternalIP } from './network';
 import { createTimeoutError } from '../util/promises';
@@ -65,6 +66,10 @@ export type StartOptions = {
   onerror?: (error: Error) => void;
 }
 
+export type ServerConfig = {
+  root?: string;
+}
+
 export enum StartExitCodes {
   SUCCESS,
   PARCIAL_SUCCESS,
@@ -72,10 +77,17 @@ export enum StartExitCodes {
 }
 
 export class DevServer {
-  static createAndStart() {
+  static createAndStart(config?: ServerConfig) {
+    const {
+      root = 'dev',
+    } = config ?? {};
+    
     const server = new this();
 
     server.addHost('localhost');
+
+    server._app.use(express.static(root));
+    server._app.use(DevServer.notFound(root));
 
     const externalIP = getFirstExternalIP();
 
@@ -96,14 +108,14 @@ export class DevServer {
     this._hosts = new Set();
 
     this._app.get('/events', this.eventsRouteHandler.bind(this));
-
-    this._app.use(express.static('docs/'));
-
-    this._app.use((req, res) => res.status(404).sendFile(path.join(process.cwd(), 'docs/404.html')));
   }
 
   get app() {
     return this._app;
+  }
+
+  static notFound(root: string = '.') {
+    return (req: Request, res: Response) => res.status(404).sendFile(path.join(process.cwd(), root, '404.html'))
   }
 
   addHost(hostname: string) {
