@@ -28,6 +28,14 @@ export function stringToParsedJSX(paragraph: string, key: number) {
   )
 }
 
+function paragraphsFactory(paragraphs?: string[]) {
+  return () => {
+    return paragraphs
+      ?.map(stringToParsedJSX)
+      .flat()
+  };
+}
+
 const heightRerenderHandler = (oldSize: Size, newSize: Size) => newSize.height !== oldSize.height;
 
 export function Skill({
@@ -39,11 +47,7 @@ export function Skill({
   const innerBodyRef = useRef<HTMLUListElement>(null);
   const bodyMaxHeight = useResizeObserver(innerBodyRef, heightRerenderHandler)?.height ?? 0;
   const disableTransition = useRenders(innerBodyRef.current !== null, 2) === 1;
-  const memoParagrapElements = useMemo(() => {
-    return paragraphs
-      ?.map(stringToParsedJSX)
-      .flat()
-  }, [paragraphs]);
+  const memoParagrapElements = useMemo(paragraphsFactory(paragraphs), [paragraphs]);
 
   function toggleHandler(visible: boolean) {
     setBodyVisible(visible);

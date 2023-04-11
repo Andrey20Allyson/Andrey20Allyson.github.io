@@ -14,7 +14,7 @@ export default function Skills() {
         'Utilização de *React* para a criação de interfaces altamente escaláveis (Inclusive, este currículo foi feito com *React*).',
         'Base do desenvolvimento web *HTML*, *CSS*, *JavaScript*.',
       ]} />
-      <Skill startsVisible title='FullStack' paragraphs={[
+      <Skill title='FullStack' paragraphs={[
         'Desenvolvimento FullStack utilizando *NextJS* para desenvolver websites com renderização tanto no _server-side_ quanto no _client-side_.'
       ]} />
       <Skill title='APIs' paragraphs={[
