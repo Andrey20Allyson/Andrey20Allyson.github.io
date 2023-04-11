@@ -7,12 +7,15 @@ export default function Skills() {
   return (
     <SkillList>
       <Skill title='BackEnd' paragraphs={[
-        'Contrução de serviços web com *NodeJS*, utilizando frameworks como *ExpressJS*, *NextJS* e *Socket.io* e banco de dados *MySQL*.',
+        'Contrução de serviços web com *NodeJS*, utilizando frameworks como *ExpressJS*, *Socket.io* e banco de dados *MySQL*.',
         'Automação de testes com o framework *Vitest*, com o intuíto de fornecer um software seguro e escalável.',
       ]} />
       <Skill title='FrontEnd' paragraphs={[
         'Utilização de *React* para a criação de interfaces altamente escaláveis (Inclusive, este currículo foi feito com *React*).',
         'Base do desenvolvimento web *HTML*, *CSS*, *JavaScript*.',
+      ]} />
+      <Skill startsVisible title='FullStack' paragraphs={[
+        'Desenvolvimento FullStack utilizando *NextJS* para desenvolver websites com renderização tanto no _server-side_ quanto no _client-side_.'
       ]} />
       <Skill title='APIs' paragraphs={[
         'Utilização dos serviços que o *Google Cloud* disponibiliza na criação de softwares.',

@@ -1,12 +1,15 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import defaultParser from "../../../utils/react-node-parser";
 import { ToggleButton } from "../../ToggleButton";
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from 'react-icons/ai';
 import './index.css';
+import useResizeObserver, { Size } from "../../../hooks/useResizeObserver";
+import useRenders from "../../../hooks/useRenders";
 
 export interface SkillProps {
   title: string;
   paragraphs?: string[];
+  startsVisible?: boolean;
 }
 
 export function OpenIcon() {
@@ -25,62 +28,17 @@ export function stringToParsedJSX(paragraph: string, key: number) {
   )
 }
 
-export enum VisualisationState {
-  INITIAL,
-  HIDEN,
-  VISIBLE,
-}
-
-export function getBodyHeight(visible: boolean) {
-  if (visible) {
-
-  }
-}
-
-function useHeight(ref: React.RefObject<Element>) {
-  const [height, setHeight] = useState<number>();
-  const [error, setError] = useState<string>();
-
-  useEffect(() => {
-    const {
-      current: element
-    } = ref;
-
-    if (!element) return setError('reference is null');
-
-    let height = element.clientHeight;
-
-    const observer = new ResizeObserver(entries => {
-      for (const { target } of entries) {
-        if (target === element && element.clientHeight !== height) {
-          height = element.clientHeight;
-          setHeight(height);
-        }
-      }
-    });
-
-    observer.observe(element);
-
-    setHeight(height);
-
-    return () => observer.disconnect();
-  }, [ref]);
-
-  if (error) {
-    console.warn(error);
-  }
-
-  return height;
-}
+const heightRerenderHandler = (oldSize: Size, newSize: Size) => newSize.height !== oldSize.height;
 
 export function Skill({
   title,
   paragraphs,
+  startsVisible = false,
 }: SkillProps) {
-  const [isBodyVisible, setBodyVisible] = useState(false);
+  const [isBodyVisible, setBodyVisible] = useState(startsVisible);
   const innerBodyRef = useRef<HTMLUListElement>(null);
-  const bodyMaxHeight = useHeight(innerBodyRef) ?? 0;
-
+  const bodyMaxHeight = useResizeObserver(innerBodyRef, heightRerenderHandler)?.height ?? 0;
+  const disableTransition = useRenders(innerBodyRef.current !== null, 2) === 1;
   const memoParagrapElements = useMemo(() => {
     return paragraphs
       ?.map(stringToParsedJSX)
@@ -96,6 +54,7 @@ export function Skill({
       <div className='skill-header'>
         <h3>{title}</h3>
         <ToggleButton
+          startToggled={startsVisible}
           onToggle={toggleHandler}
           toggleoff={{
             Component: OpenIcon,
@@ -106,7 +65,10 @@ export function Skill({
         />
       </div>
       <div
-        style={{ height: isBodyVisible ? bodyMaxHeight : 0 }}
+        style={{
+          height: isBodyVisible ? bodyMaxHeight : 0,
+          transition: disableTransition ? 'height 0s' : undefined,
+        }}
         className='skill-body'>
         <ul ref={innerBodyRef} >
           {memoParagrapElements}
